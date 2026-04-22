@@ -98,7 +98,7 @@ const albuns = [
     titulo: "Freudian",
     artista: "Daniel Caesar",
     ano: 2017,
-    capa: "public/albums/Freudian.jpg",
+    capa: "/albums/Freudian.jpg",
     spotify: "https://open.spotify.com/intl-pt/album/4E1XUBMTpLO7GpBzUo65Jp?si=d1f012d3b5134a61",
   },
   {
@@ -391,7 +391,7 @@ export default function AlbunsPage() {
   return (
     <main className="w-full min-h-screen flex items-center justify-center overflow-hidden">
       {!isMobile && (
-        <div className="absolute bottom-6 left-6 text-xs opacity-50 max-w-[200px] leading-relaxed">
+        <div className="absolute bottom-6 left-6 text-xs opacity-70 max-w-[200px] leading-relaxed">
           <p>
             Uma recomendação pessoal de discos. Navegue horizontalmente, rolando
             o mouse. Clique em um álbum para expandir. Clique no álbum expandido
