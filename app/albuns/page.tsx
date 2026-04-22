@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-
-//criando a constante de conteúdo dos álbuns, com título, artista, ano, capa e link do spotify
 const albuns = [
   {
     titulo: "The Slow Rush",
@@ -301,12 +299,12 @@ const albuns = [
   },
 ];
 
-//criando a página de álbuns, com um carrossel horizontal
+export default function AlbunsPage() {
   const [activeIndex, setActiveIndex] = useState(2);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const scrollLock = useRef(false);
-//criando um efeito para detectar se o usuário está em um dispositivo móvel, e ajustar a interface de acordo (testar se funciona de fato)
+
   useEffect(() => {
     const media = window.matchMedia("(max-width: 768px)");
 
@@ -319,7 +317,7 @@ const albuns = [
 
     return () => media.removeEventListener("change", handleChange);
   }, []);
-//criando um efeito para detectar o scroll do mouse, e navegar pelos álbuns de acordo (desabilitar o scroll quando o modo de detalhe estiver aberto)
+
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (isDetailOpen) return;
@@ -344,7 +342,7 @@ const albuns = [
       window.removeEventListener("wheel", handleWheel);
     };
   }, [isDetailOpen]);
-//criando um efeito para detectar as teclas de seta para navegar pelos álbuns, e a tecla enter para abrir o modo de detalhe, e a tecla escape para fechar o modo de detalhe
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Enter") {
@@ -362,7 +360,7 @@ const albuns = [
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
-//
+
   const albumCentral = albuns[activeIndex];
 
   return (
@@ -403,6 +401,9 @@ const albuns = [
             ) : (
               <>
                 <div className="text-4xl leading-none">▼</div>
+                <span className="mt-2 text-[10px] uppercase tracking-[0.28em] text-neutral-500">
+                  selecionado
+                </span>
               </>
             )}
           </div>
