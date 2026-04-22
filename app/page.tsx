@@ -35,7 +35,7 @@ const albuns = [
     titulo: "Is This It",
     artista: "The Strokes",
     ano: 2001,
-    capa: "/albums/Is-This-It.jpg",
+    capa: "/albums/is-this-it.jpg",
     spotify: "https://open.spotify.com/intl-pt/track/2pAD0PKMUMtxlMvz33tYzB?si=1b17ac48560e43da",
   },
   {
@@ -91,14 +91,14 @@ const albuns = [
     titulo: "Channel Orange",
     artista: "Frank Ocean",
     ano: 2012,
-    capa: "/albums/channel-orange.jpg",
+    capa: "/albums/Channel-orange.jpg",
     spotify: "https://open.spotify.com/intl-pt/album/392p3shh2jkxUxY2VHvlH8?si=8ecb0a3f12e9415e",
   },
   {
     titulo: "Freudian",
     artista: "Daniel Caesar",
     ano: 2017,
-    capa: "/albums/freudian.jpg",
+    capa: "public/albums/Freudian.jpg",
     spotify: "https://open.spotify.com/intl-pt/album/4E1XUBMTpLO7GpBzUo65Jp?si=d1f012d3b5134a61",
   },
   {
@@ -175,21 +175,21 @@ const albuns = [
     titulo: "Take Me to Your Leader",
     artista: "King Geedorah",
     ano: 2003,
-    capa: "/albums/take-me-to-your-leader.jpg",
+    capa: "/albums/Take-me-to-your-leader.jpg",
     spotify: "https://open.spotify.com/intl-pt/album/1mrhahrlJu5JfzgeV6Cy8t?si=3321c32ee2444dd8",
   },
   {
     titulo: "In Rainbows",
     artista: "Radiohead",
     ano: 2007,
-    capa: "/albums/in-rainbows.jpg",
+    capa: "/albums/In-rainbows.jpg",
     spotify: "https://open.spotify.com/intl-pt/album/5vkqYmiPBYLaalcmjujWxK?si=39c6988706ac4c0e",
   },
   {
     titulo: "Lemonade",
     artista: "Beyoncé",
     ano: 2016,
-    capa: "/albums/lemonade.jpg",
+    capa: "/albums/Lemonade.jpg",
     spotify: "https://open.spotify.com/intl-pt/album/7dK54iZuOxXFarGhXwEXfF?si=35b64b9a592b4fd6",
   },
   {
@@ -238,14 +238,14 @@ const albuns = [
     titulo: "Jamie",
     artista: "Montell Fish",
     ano: 2022,
-    capa: "/albums/jamie.jpg",
+    capa: "/albums/Jamie.jpg",
     spotify: "https://open.spotify.com/intl-pt/album/4StdgB0YaIYLGhhXBLuoWl?si=446f779e4d954a30",
   },
   {
     titulo: "Wolf",
     artista: "Tyler The Creator",
     ano: 2013,
-    capa: "/albums/wolf.jpg",
+    capa: "/albums/Wolf.jpg",
     spotify: "https://open.spotify.com/intl-pt/album/40QTqOBBxCEIQlLNdSjFQB?si=b574c30429f54e28",
   },
   {
@@ -502,7 +502,6 @@ export default function AlbunsPage() {
               );
             })}
           </div>
-//daqui
           <div
             className={
               isMobile
@@ -534,7 +533,6 @@ export default function AlbunsPage() {
               </>
             )}
           </div>
-          //pra cá
         </section>
 
         {isDetailOpen && (
