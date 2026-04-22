@@ -318,7 +318,7 @@ export default function AlbunsPage() {
     if (isDetailOpen) return;
 
     const distance = touchStartY.current - touchEndY.current;
-    const threshold = 30;
+    const threshold = 90;
 
     if (distance > threshold) {
       setActiveIndex((prev) => Math.min(prev + 1, albuns.length - 1));
@@ -358,7 +358,7 @@ export default function AlbunsPage() {
 
       setTimeout(() => {
         scrollLock.current = false;
-      }, 220);
+      }, 300);
     };
 
     window.addEventListener("wheel", handleWheel, { passive: true });
