@@ -476,38 +476,39 @@ export default function AlbunsPage() {
               );
             })}
           </div>
+//daqui
+         <div
+  className={
+    isMobile
+      ? "absolute bottom-0 left-0 right-0 z-[160]"
+      : "mt-10 text-center"
+  }
+>
+  {isMobile ? (
+    <div className="relative rounded-t-[22px] overflow-hidden">
+      <div className="absolute inset-0 bg-white/70 backdrop-blur-xl" />
+      <div className="relative z-10 px-6 pb-8 pt-5">
+        <h1 className="text-2xl font-bold uppercase text-center">
+          {albumCentral.titulo}
+        </h1>
 
-          <div
-            className={
-              isMobile
-                ? "absolute bottom-0 left-0 right-0 z-20 rounded-t-[22px] bg-white/75 px-6 pb-8 pt-5 backdrop-blur-md"
-                : "mt-10 text-center"
-            }
-          >
-            <h1
-              className={
-                isMobile
-                  ? "text-2xl font-bold uppercase text-center"
-                  : "text-2xl font-bold uppercase tracking-tight"
-              }
-            >
-              {albumCentral.titulo}
-            </h1>
-
-            {isMobile ? (
-              <div className="mt-4 flex items-center justify-between text-sm text-neutral-800">
-                <span>{albumCentral.artista}</span>
-                <span>{albumCentral.ano}</span>
-              </div>
-            ) : (
-              <>
-                <p className="mt-2 text-base">{albumCentral.artista}</p>
-                <p className="mt-1 text-xs text-neutral-600">
-                  {albumCentral.ano}
-                </p>
-              </>
-            )}
-          </div>
+        <div className="mt-4 flex items-center justify-between text-sm text-neutral-800">
+          <span>{albumCentral.artista}</span>
+          <span>{albumCentral.ano}</span>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <>
+      <h1 className="text-2xl font-bold uppercase tracking-tight">
+        {albumCentral.titulo}
+      </h1>
+      <p className="mt-2 text-base">{albumCentral.artista}</p>
+      <p className="mt-1 text-xs text-neutral-600">{albumCentral.ano}</p>
+    </>
+  )}
+</div>
+          //pra cá
         </section>
 
         {isDetailOpen && (
