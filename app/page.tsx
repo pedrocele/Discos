@@ -304,6 +304,31 @@ export default function AlbunsPage() {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const scrollLock = useRef(false);
+  const touchStartY = useRef<number | null>(null);
+  const touchEndY = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartY.current = e.changedTouches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchEndY.current = e.changedTouches[0].clientY;
+
+    if (touchStartY.current === null || touchEndY.current === null) return;
+    if (isDetailOpen) return;
+
+    const distance = touchStartY.current - touchEndY.current;
+    const threshold = 30;
+
+    if (distance > threshold) {
+      setActiveIndex((prev) => Math.min(prev + 1, albuns.length - 1));
+    } else if (distance < -threshold) {
+      setActiveIndex((prev) => Math.max(prev - 1, 0));
+    }
+
+    touchStartY.current = null;
+    touchEndY.current = null;
+  };
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 768px)");
@@ -411,9 +436,10 @@ export default function AlbunsPage() {
 
         <section className="flex w-full flex-col items-center justify-center">
           <div
-            className={`relative transition-all duration-300 ${
-              isDetailOpen ? "blur-md" : "blur-0"
-            } ${isMobile ? "h-[72vh] w-full" : "h-[340px] w-screen"}`}
+            className={`relative transition-all duration-300 ${isDetailOpen ? "blur-md" : "blur-0"
+              } ${isMobile ? "h-[72vh] w-full touch-none" : "h-[340px] w-screen"}`}
+            onTouchStart={isMobile ? handleTouchStart : undefined}
+            onTouchEnd={isMobile ? handleTouchEnd : undefined}
           >
             {albuns.map((album, index) => {
               const offset = index - activeIndex;
@@ -444,15 +470,15 @@ export default function AlbunsPage() {
                         ? "210px"
                         : "190px"
                       : isActive
-                      ? "200px"
-                      : "180px",
+                        ? "200px"
+                        : "180px",
                     height: isMobile
                       ? isActive
                         ? "210px"
                         : "190px"
                       : isActive
-                      ? "200px"
-                      : "180px",
+                        ? "200px"
+                        : "180px",
                     left: "50%",
                     top: isMobile ? "50%" : isActive ? "40px" : "50px",
                     transform,
@@ -477,37 +503,37 @@ export default function AlbunsPage() {
             })}
           </div>
 //daqui
-         <div
-  className={
-    isMobile
-      ? "absolute bottom-0 left-0 right-0 z-[160]"
-      : "mt-10 text-center"
-  }
->
-  {isMobile ? (
-    <div className="relative rounded-t-[22px] overflow-hidden">
-      <div className="absolute inset-0 bg-white/70 backdrop-blur-xl" />
-      <div className="relative z-10 px-6 pb-8 pt-5">
-        <h1 className="text-2xl font-bold uppercase text-center">
-          {albumCentral.titulo}
-        </h1>
+          <div
+            className={
+              isMobile
+                ? "absolute bottom-0 left-0 right-0 z-[160]"
+                : "mt-10 text-center"
+            }
+          >
+            {isMobile ? (
+              <div className="relative rounded-t-[22px] overflow-hidden">
+                <div className="absolute inset-0 bg-white/70 backdrop-blur-xl" />
+                <div className="relative z-10 px-6 pb-8 pt-5">
+                  <h1 className="text-2xl font-bold uppercase text-center">
+                    {albumCentral.titulo}
+                  </h1>
 
-        <div className="mt-4 flex items-center justify-between text-sm text-neutral-800">
-          <span>{albumCentral.artista}</span>
-          <span>{albumCentral.ano}</span>
-        </div>
-      </div>
-    </div>
-  ) : (
-    <>
-      <h1 className="text-2xl font-bold uppercase tracking-tight">
-        {albumCentral.titulo}
-      </h1>
-      <p className="mt-2 text-base">{albumCentral.artista}</p>
-      <p className="mt-1 text-xs text-neutral-600">{albumCentral.ano}</p>
-    </>
-  )}
-</div>
+                  <div className="mt-4 flex items-center justify-between text-sm text-neutral-800">
+                    <span>{albumCentral.artista}</span>
+                    <span>{albumCentral.ano}</span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <>
+                <h1 className="text-2xl font-bold uppercase tracking-tight">
+                  {albumCentral.titulo}
+                </h1>
+                <p className="mt-2 text-base">{albumCentral.artista}</p>
+                <p className="mt-1 text-xs text-neutral-600">{albumCentral.ano}</p>
+              </>
+            )}
+          </div>
           //pra cá
         </section>
 
